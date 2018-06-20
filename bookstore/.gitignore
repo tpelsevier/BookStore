@@ -12,9 +12,11 @@
 
 ### IntelliJ IDEA ###
 .idea
+node_modules
 *.iws
 *.iml
 *.ipr
+package-lock.json
 
 ### NetBeans ###
 /nbproject/private/
