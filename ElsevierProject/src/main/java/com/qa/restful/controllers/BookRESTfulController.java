@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class BookRESTfulController {
 
     private BookRepository bookRepository;
-    @RequestMapping(value = "/book/details/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/book/details/{id}",method = RequestMethod.GET)
     public ResponseEntity<Book> getBookDetail(@PathVariable String bookId){
         Book book = bookRepository.findOne(Integer.parseInt(bookId));
         if(book == null){
