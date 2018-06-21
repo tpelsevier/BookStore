@@ -18,7 +18,7 @@ public class BookRESTfulController {
 
     private BookRepository bookRepository;
     @RequestMapping(value = "/book/details/{id}",method = RequestMethod.GET)
-    public ResponseEntity<Book> getBookDetail(@PathVariable String bookId){
+    public ResponseEntity<Book> getBookDetail(@PathVariable("id") String bookId){
         Book book = bookRepository.findOne(Integer.parseInt(bookId));
         if(book == null){
             return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
