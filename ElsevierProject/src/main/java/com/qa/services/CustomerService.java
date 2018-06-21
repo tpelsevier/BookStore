@@ -1,11 +1,14 @@
 package com.qa.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.qa.models.Customer;
 import com.qa.repositories.CustomerRepository;
+
+import javax.transaction.Transactional;
 
 @Service
 public class CustomerService {
@@ -13,11 +16,16 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	
+
+	@Transactional
 	public Customer saveCustomer(Customer customer)
 	{
-		
-		return customerRepository.save(customer);
+		Customer createdCustomer = new Customer();
+		createdCustomer.setEmail(customer.getEmail());
+		createdCustomer.setFirstName(customer.getFirstName());
+		createdCustomer.setLastName(customer.getLastName());
+		createdCustomer.setPassword(customer.getPassword());
+		return customerRepository.save(createdCustomer);
 	}
 	
 	public Customer loginProcess(String email,String password){
