@@ -1,2 +1,7 @@
 .gitignore
+*.xml
 bookstoreclient/node_modules
+ElsevierProject/.idea
+ElsevierProject/.mvn
+/ElsevierProject/.settings
+/ElservierProject/src/main/resources/application.properties
