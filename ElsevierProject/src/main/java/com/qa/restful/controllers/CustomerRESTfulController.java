@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qa.models.Book;
@@ -56,38 +56,24 @@ public class CustomerRESTfulController {
 		return books;
 		
 	}
+	@RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public ResponseEntity<Customer> getUser(){
+	    Customer customer = new Customer();
+	    customer.setEmail("Hello@elsevier.com");
+	    customer.setPassword("password123");
+	    customer.setLastName("Hello");
+	    customer.setFirstName("ss");
+	    return new ResponseEntity<>(customer,HttpStatus.OK);
+    }
 
 	
-	@RequestMapping("/addCustomer")
-	public Customer registerProcess(@ModelAttribute("Customer") Customer customer)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResponseEntity<Customer> register(@RequestBody Customer customer)
 	{
-		
-		System.out.println("Customer Firstname is "+customer.getFirstName());
-	
-		System.out.println("Customer Password is "+customer.getPassword());
-		
-		Customer c = customerService.saveCustomer(customer);
-	  	
-		return c;
+	  	Customer created = customerService.saveCustomer(customer);
+		return new ResponseEntity<>(created,HttpStatus.OK);
 	}
-	
-	@RequestMapping("/loginCustomer")
-	public Customer loginProcess(@RequestParam("email") String email,
-										@RequestParam("password") String password)
-	{
-		
-		
-		System.out.println("Email is "+email);
-		
-		
-		System.out.println("Password is "+password);
-		
-		
-		Customer c = customerService.loginProcess(email, password);
-	  
-		
-		return c;
-	}
+
 	
 	
 	
