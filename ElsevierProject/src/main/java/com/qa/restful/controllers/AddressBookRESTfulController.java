@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.qa.models.Address;
 import com.qa.models.Customer;
@@ -59,15 +58,11 @@ public class AddressBookRESTfulController {
 			System.out.println("After update ");
 			addresses.put("billing_address", billingAddress);
 			addresses.put("shipping_address", shippingAddress);
-//			modelAndView = new ModelAndView("address_book","billing_address",billingAddress);
-//			modelAndView.addObject("shipping_address", shippingAddress);
 		}
 		else
 		{
 			addresses.put("billing_address", billingAddress);
 			addresses.put("shipping_address", shippingAddress);
-//			modelAndView = new ModelAndView("address_book","billing_address",billingAddress);
-//			modelAndView.addObject("shipping_address", shippingAddress);
 			
 		}
 		
@@ -76,7 +71,6 @@ public class AddressBookRESTfulController {
 		{
 			Address savedAddress = addressService.saveAddress(address);
 			addresses.put("billing_address", savedAddress);
-			//modelAndView = new ModelAndView("address_book","billing_address",savedAddress);
 			
 		}
 		return addresses;
