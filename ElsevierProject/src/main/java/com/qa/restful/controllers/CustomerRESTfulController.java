@@ -56,26 +56,13 @@ public class CustomerRESTfulController {
 		return books;
 		
 	}
-	@RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public ResponseEntity<Customer> getUser(){
-	    Customer customer = new Customer();
-	    customer.setEmail("Hello@elsevier.com");
-	    customer.setPassword("password123");
-	    customer.setLastName("Hello");
-	    customer.setFirstName("ss");
-	    return new ResponseEntity<>(customer,HttpStatus.OK);
-    }
-
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<Customer> register(@RequestBody Customer customer)
+	public ResponseEntity<Customer> register(@Valid @RequestBody Customer customer)
 	{
+
 	  	Customer created = customerService.saveCustomer(customer);
 		return new ResponseEntity<>(created,HttpStatus.OK);
 	}
-
-	
-	
-	
 	
 }
