@@ -1,6 +1,6 @@
+import './Header.css';
 import React, { Component } from 'react';
 import { Alert, FormGroup, Button, FormControl, MenuItem, Nav, NavItem, NavDropdown, Navbar } from 'react-bootstrap';
-import './Header.css';
 import logo from './logo.svg';
 import {Link} from 'react-router-dom';
 
