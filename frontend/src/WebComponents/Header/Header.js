@@ -30,7 +30,10 @@ class Header extends React.Component {
                             <Link to="/about_us">About Us</Link>
                         </NavItem>
                         <NavItem eventKey={2}>
-                            <Link to="/user"> Log In </Link>
+                            <Link to="/Signup"> Sign Up </Link>
+                        </NavItem>
+                        <NavItem eventKey={2}>
+                            <Link to="/login"> Log In </Link>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>        
