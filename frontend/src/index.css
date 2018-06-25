@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+a > a, a[href]:hover, a[href]:link, a[href]:active, a[href]:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* a[href]:active, a[href]:visited, a[href]:link {
+  color: yellow;
+  text-decoration: none;
+} */

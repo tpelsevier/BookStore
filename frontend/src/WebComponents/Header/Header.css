@@ -1,0 +1,12 @@
+.navbar-brand {
+    transform: translate(0,5%);
+    display: inline-flex;
+}
+
+.navbar-header {
+    position: relative;
+}
+
+h3 {
+    color:white;
+}
