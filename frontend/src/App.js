@@ -9,7 +9,11 @@ import SignUp from './WebComponents/Signup/Signup';
 import BookDetails from './WebComponents/BookDetails/BookDetails';
 import Home from './WebComponents/Home/Home';
 import UserProfile from './WebComponents/UserProfile/UserProfile';
+<<<<<<< HEAD
 import ChangePass from './WebComponents/ChangePass/changePass';
+=======
+import Checkout from './WebComponents/Checkout/Checkout';
+>>>>>>> 20e3299225ecd9a46fe234546ff4978f135c02fa
 
 class App extends Component {
 
@@ -29,7 +33,11 @@ class App extends Component {
               <Route exact path='/signup' component={SignUp}/>
               <Route exact path='/BookDetails' component={BookDetails}/>
               <Route exact path='/UserProfile' component={UserProfile}/>
+<<<<<<< HEAD
               <Route exact path='/ChangePass' component={ChangePass}/>
+=======
+              <Route exact path='/checkout' component={Checkout}/>
+>>>>>>> 20e3299225ecd9a46fe234546ff4978f135c02fa
             </Switch>
           </main>
         </div>

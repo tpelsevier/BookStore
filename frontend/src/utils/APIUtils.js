@@ -1,6 +1,7 @@
-import {API_BASE_URL,ACCESS_TOKEN} from '../constants';
+import {API_BASE_URL,ACCESS_TOKEN} from './Constants';
 
-const request = (option) => {
+
+const request = (options) => {
     const headers = new Headers({
       'Content-Type':'application/json',
     })
@@ -8,13 +9,13 @@ const request = (option) => {
       headers.append('Authorization','Bearer '+localStorage.getItem(ACCESS_TOKEN));
     }
     const defaults = {headers: headers};
-    option = Object.assign({}, defaults,options);
+    options = Object.assign({}, defaults,options);
 
-    return fetch(option.url, options)
+    return fetch(options.url, options)
     .then(response =>
-      response.json.then(json => {
+      response.json().then(json => {
         if(!response.ok){
-          return Promise.reject(json)''
+          return Promise.reject(json);
         }
         return json;
       })
@@ -34,7 +35,7 @@ export function signup(signupRequest) {
   return request({
     url: API_BASE_URL +"/auth/register",
     method: 'POST',
-    body: JSON.stringify(signupRequest);
+    body: JSON.stringify(signupRequest)
   });
 }
 
@@ -85,7 +86,7 @@ export function changeProfile(modifiedProfileRequest){
   return request({
     url: API_BASE_URL+"/user/update",
     method: 'POST',
-    body: JSON.stringify(modifiedProfileRequest);
+    body: JSON.stringify(modifiedProfileRequest)
   });
 }
 

@@ -2,6 +2,7 @@ import './Header.css';
 import React, { Component } from 'react';
 import { Nav, NavItem, Navbar } from 'react-bootstrap';
 import logo from './logo.svg';
+import cart from './whitecart.png';
 import { Link } from 'react-router-dom';
 
 
@@ -15,18 +16,18 @@ class Header extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-      }
+    }
 
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-    
-      handleSubmit(event) {
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit(event) {
         // get and display search results
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
-      }
-    
+    }
+
     render() {
         return (
             <Navbar inverse collapseOnSelect fluid staticTop >
@@ -64,6 +65,12 @@ class Header extends React.Component {
                         <NavItem eventKey={5}>
                             <Link to="/login"> Log In </Link>
                         </NavItem>
+                        <NavItem eventKey={6}>
+                            <Link to="/checkout">
+                                <img src={cart} className="cart" alt="logo" />
+                            </Link>
+                        </NavItem>
+
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
