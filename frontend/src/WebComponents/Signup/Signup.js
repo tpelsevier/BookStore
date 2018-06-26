@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel, ListGroup, ListGroupItem } from "react-bootstrap";
 import { signup } from '../../utils/APICalls';
-import { notification } from 'antd';
 import "./SignUp.css";
 
 export default class SignUp extends Component {
