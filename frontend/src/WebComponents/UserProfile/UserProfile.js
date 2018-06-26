@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Button, FormControl, Col, ControlLabel, NavItem, NavDropdown, Navbar } from 'react-bootstrap';
+import { Form, FormGroup, Button, FormControl, Col, ControlLabel, ButtonGroup, ToggleButton, Navbar } from 'react-bootstrap';
 
 class UserProfile extends Component {
     constructor(props) {
@@ -10,68 +10,64 @@ class UserProfile extends Component {
         lastName: 'test last name',
         email: 'test email',
         disabled: true
-
       };
+      this.handleChange = this.handleChange.bind(this);
     }
   
-    handleNameChange = (event) => {
-      this.setState({ name: event.target.value });
+    handleChange = (event) => {
+      this.setState({ firstName: this.firstName.value, lastName: this.lastName.value, email: this.email.value});
     };
 
-    handleGameClik() {
+    handleEditClik() {
         this.setState( {disabled: !this.state.disabled} )
       } 
 
     saveUserProfile(){
-
+        // call API to save here
+        alert('Updated User Info: \nfirst name: ' + this.state.firstName +
+              '\nlast name: ' + this.state.lastName + 
+              '\nemail: ' + this.state.email);
     }
     
     render() {
       return (
         <div>
             <Form horizontal>
-                <FormGroup controlId="formHorizontalEmail">
-                    <Col componentClass={ControlLabel} sm={2}>
+                <FormGroup controlId="formHorizontalEmail" bsSize="large">
+                    <Col componentClass={ControlLabel} sm={1} smOffset={2}>
                     First Name
                     </Col>
                     <Col sm={6}>
-                    <FormControl disabled={this.state.disabled} type="text" placeholder={this.state.firstName} />
+                    <FormControl inputRef={input => this.firstName = input} disabled={this.state.disabled} type="text" placeholder={this.state.firstName} onChange={this.handleChange}/>
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="formHorizontalText">
-                    <Col componentClass={ControlLabel} sm={2}>
+                <FormGroup controlId="formHorizontalText" bsSize="large">
+                    <Col componentClass={ControlLabel} sm={1} smOffset={2}>
                     Last Name
                     </Col>
                     <Col sm={6}>
-                    <FormControl disabled={this.state.disabled} type="text" placeholder={this.state.lastName} />
+                    <FormControl inputRef={input => this.lastName = input} disabled={this.state.disabled} type="text" placeholder={this.state.lastName} onChange={this.handleChange}/>
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="formHorizontalText">
-                    <Col componentClass={ControlLabel} sm={2}>
+                <FormGroup controlId="formHorizontalText" bsSize="large">
+                    <Col componentClass={ControlLabel} sm={1} smOffset={2}>
                     Email
                     </Col>
                     <Col sm={6}>
-                    <FormControl disabled={this.state.disabled} type="email" placeholder={this.state.email} />
+                    <FormControl inputRef={input => this.email = input} disabled={this.state.disabled} type="email" placeholder={this.state.email} onChange={this.handleChange}/>
                     </Col>
                 </FormGroup>
-
-                
             </Form>
-            <Form inline>
-                <FormGroup>
-                    <Col smOffset={4} sm={4}>
-                    <Button onClick = {this.handleGameClik.bind(this)}> Edit</Button>
-                    </Col>
-                </FormGroup>
-                <FormGroup>
-                    <Col smOffset={4} sm={4} >
-                    <Button disabled={this.state.disabled} onClick = {this.saveUserProfile.bind(this)}> Save</Button>
-                    </Col>
-                </FormGroup>
-           
-            </Form>
+            <ButtonGroup>
+                <Button onClick = {this.handleEditClik.bind(this)} bsSize="large" >
+                Edit
+                </Button>
+                <Button bsStyle="primary" disabled={this.state.disabled} onClick = {this.saveUserProfile.bind(this)} bsSize="large">
+                Save
+                </Button>
+            </ButtonGroup>
         </div>
       );
     }
