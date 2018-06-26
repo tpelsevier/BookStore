@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel, ListGroup, ListGroupItem } from "react-bootstrap";
-import { login } from '../../utils/APICalls';
-import { ACCESS_TOKEN } from '../../utils/Constants';
+import { login } from '../../utils/APIUtils';
 import "./Login.css";
 
 export default class Login extends Component {
@@ -28,6 +27,17 @@ export default class Login extends Component {
         event.preventDefault();
         console.log(this.state.email);
         console.log(this.state.password);
+
+        const loginRequest = {
+            email: this.state.email,
+            password: this.state.password
+        };
+
+        login(loginRequest)
+                .then(response => {
+                    //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                    console.log(response.accessToken);
+                })
 
     }
 
