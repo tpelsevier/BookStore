@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Button, FormGroup, FormControl, ControlLabel, ListGroup, ListGroupItem, form } from "react-bootstrap";
-=======
-import { Button, FormGroup, FormControl, ControlLabel, ListGroup, ListGroupItem } from "react-bootstrap";
->>>>>>> master
-import { login } from '../../utils/APICalls';
+import { login } from '../../utils/APIUtils';
 import { ACCESS_TOKEN } from '../../utils/Constants';
 import "./Login.css";
 

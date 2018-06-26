@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
 <<<<<<< HEAD
-    "antd": "^3.6.4",
     "bootstrap": "^4.0.0-alpha.4",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
