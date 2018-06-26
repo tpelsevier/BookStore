@@ -1,21 +1,21 @@
 import './Header.css';
 import React, { Component } from 'react';
-import { Alert, FormGroup, Button, FormControl, MenuItem, Nav, NavItem, NavDropdown, Navbar } from 'react-bootstrap';
+import { Nav, NavItem, Navbar } from 'react-bootstrap';
 import logo from './logo.svg';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
-class Header extends React.Component {
+class Header extends Component {
     render() {
         return (
-            <Navbar inverse collapseOnSelect fluid >
+            <Navbar inverse collapseOnSelect fluid staticTop >
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#brand">
+                        <Link to="/home">
                             <img src={logo} className="App-logo" alt="logo" />
                             <h3> Nozama</h3>
-                        </a>
+                        </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
@@ -27,16 +27,22 @@ class Header extends React.Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} >
+                            <Link to="/home">Home</Link>
+                        </NavItem>
+                        <NavItem eventKey={2} >
                             <Link to="/about_us">About Us</Link>
                         </NavItem>
-                        <NavItem eventKey={2}>
+                        <NavItem eventKey={3} >
+                            <Link to="/bookdetails">Book Details</Link>
+                        </NavItem>
+                        <NavItem eventKey={4}>
                             <Link to="/Signup"> Sign Up </Link>
                         </NavItem>
-                        <NavItem eventKey={2}>
+                        <NavItem eventKey={5}>
                             <Link to="/login"> Log In </Link>
                         </NavItem>
                     </Nav>
-                </Navbar.Collapse>        
+                </Navbar.Collapse>
             </Navbar>
 
         );

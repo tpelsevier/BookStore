@@ -10,7 +10,7 @@ class BookDetails extends React.Component {
                 <Row>
                     <Col xs={6} md={4}>
                         <Thumbnail src={cover} alt="242x200">
-                            <h3>Book title</h3>
+                            <h4>Book title</h4>
                             <p>Price</p>
                             <p>
                             <Button bsStyle="primary">Add To Cart</Button>&nbsp;

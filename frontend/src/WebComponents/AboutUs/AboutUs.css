@@ -5,11 +5,11 @@
     height: auto;
 }
 
-.jumbotron {
+.jumbotron1 {
     background: linear-gradient(to bottom right, lightblue, #8cb8ff);
 }
 
-/* .container {
+.container {
     margin-left: 0;
     margin-right: 0;
-} */
+}
