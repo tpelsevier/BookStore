@@ -39,7 +39,7 @@ class UserProfile extends Component {
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="formHorizontalPassword">
+                <FormGroup controlId="formHorizontalText">
                     <Col componentClass={ControlLabel} sm={2}>
                     Last Name
                     </Col>
@@ -48,7 +48,7 @@ class UserProfile extends Component {
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="formHorizontalPassword">
+                <FormGroup controlId="formHorizontalText">
                     <Col componentClass={ControlLabel} sm={2}>
                     Email
                     </Col>
