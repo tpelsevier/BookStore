@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Button, FormControl, Col, ControlLabel, ButtonGroup, ToggleButton, Navbar } from 'react-bootstrap';
+import { Form, FormGroup, Button, FormControl, Col, ControlLabel, ButtonGroup, ButtonToolbar, Navbar } from 'react-bootstrap';
+import {withRouter} from "react-router-dom";
 
 class UserProfile extends Component {
     constructor(props) {
@@ -22,6 +23,10 @@ class UserProfile extends Component {
         this.setState( {disabled: !this.state.disabled} )
       } 
 
+    handleChangePass() {
+        this.props.history.push("ChangePass");
+    } 
+
     saveUserProfile(){
         // call API to save here
         alert('Updated User Info: \nfirst name: ' + this.state.firstName +
@@ -31,7 +36,7 @@ class UserProfile extends Component {
     
     render() {
       return (
-        <div>
+        <div class="UserProfile">
             <Form horizontal>
                 <FormGroup controlId="formHorizontalEmail" bsSize="large">
                     <Col componentClass={ControlLabel} sm={1} smOffset={2}>
@@ -60,17 +65,24 @@ class UserProfile extends Component {
                     </Col>
                 </FormGroup>
             </Form>
-            <ButtonGroup>
-                <Button onClick = {this.handleEditClik.bind(this)} bsSize="large" >
-                Edit
-                </Button>
-                <Button bsStyle="primary" disabled={this.state.disabled} onClick = {this.saveUserProfile.bind(this)} bsSize="large">
-                Save
-                </Button>
-            </ButtonGroup>
+
+                <ButtonGroup>
+                    <Button onClick = {this.handleEditClik.bind(this)} bsSize="large" >
+                    Edit
+                    </Button>
+                    <Button bsStyle="primary" disabled={this.state.disabled} onClick = {this.saveUserProfile.bind(this)} bsSize="large">
+                    Save
+                    </Button>
+                </ButtonGroup>
+                <ButtonGroup>
+                    <Button onClick = {this.handleChangePass.bind(this)} bsSize="large" >
+                        Change Password
+                    </Button>
+                </ButtonGroup>
+            
         </div>
       );
     }
   }
 
-  export default UserProfile;
+  export default withRouter(UserProfile);
