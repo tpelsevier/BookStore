@@ -7,6 +7,26 @@ import {Link} from 'react-router-dom';
 
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '',
+            searchResults: []
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+      handleSubmit(event) {
+        // get and display search results
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+      }
+    
     render() {
         return (
             <Navbar inverse collapseOnSelect fluid >
@@ -20,10 +40,13 @@ class Header extends React.Component {
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <Nav>
-                        <NavItem eventKey={1} href="#">
-                            Search Bar Here
-                        </NavItem>
+                    <Nav pullLeft>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                            <input type="text" value={this.state.value} onChange={this.handleChange} />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} >
