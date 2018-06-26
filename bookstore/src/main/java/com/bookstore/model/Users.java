@@ -41,7 +41,6 @@ public class Users {
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @NotBlank
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_address",
             joinColumns = @JoinColumn(name = "user_id"),

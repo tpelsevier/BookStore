@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel, ListGroup, ListGroupItem } from "react-bootstrap";
-import { signup } from '../../utils/APICalls';
+import { signup, getUserProfile } from '../../utils/APIUtils';
 import "./SignUp.css";
 
 export default class SignUp extends Component {
@@ -35,25 +35,16 @@ export default class SignUp extends Component {
         console.log(this.state.password);
 
         const signupRequest = {
-            firstname: this.state.firstname.value,
-            lastname: this.state.lastname.value,
-            email: this.state.email.value,
-            password: this.state.password.value
+            firstName: this.state.firstname,
+            lastName: this.state.lastname,
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.password
         };
 
-        // signup(signupRequest)
-        //     .then(response => {
-        //         notification.success({
-        //             message: 'Polling App',
-        //             description: "Thank you! You're successfully registered. Please Login to continue!",
-        //         });
-        //         this.props.history.push("/login");
-        //     }).catch(error => {
-        //         notification.error({
-        //             message: 'Polling App',
-        //             description: error.message || 'Sorry! Something went wrong. Please try again!'
-        //         });
-        //     });
+        const response = signup(signupRequest)
+        // redirect if successful
+        console.log(response)
     }
 
     render() {
@@ -99,11 +90,12 @@ export default class SignUp extends Component {
                             <Button
                                 block
                                 bsSize="large"
-                                // disabled={!this.validateForm()}
+                                disabled={!this.validateForm()}
                                 type="submit"
                             >
                                 Sign Up
                         </Button>
+
                         </ListGroupItem>
                     </ListGroup>
                 </form>
