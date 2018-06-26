@@ -8,6 +8,7 @@ import Login from './WebComponents/Login/Login';
 import SignUp from './WebComponents/Signup/Signup';
 import BookDetails from './WebComponents/BookDetails/BookDetails';
 import Home from './WebComponents/Home/Home';
+import UserProfile from './WebComponents/UserProfile/UserProfile';
 
 class App extends Component {
 
@@ -25,6 +26,8 @@ class App extends Component {
               <Route exact path='/bookdetails' component={BookDetails}/>
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={SignUp}/>
+              <Route exact path='/BookDetails' component={BookDetails}/>
+              <Route exact path='/UserProfile' component={UserProfile}/>
             </Switch>
           </main>
         </div>
