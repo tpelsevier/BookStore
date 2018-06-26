@@ -42,14 +42,12 @@ class Header extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullLeft>
-                        <NavItem eventKey={1}>
-                            <form onSubmit={this.handleSubmit}>
-                                <label>
-                                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                                </label>
-                                <input type="submit" value="Submit" />
-                            </form>
-                        </NavItem>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                            <input type="text" value={this.state.value} onChange={this.handleChange} />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} >

@@ -1,6 +1,7 @@
 import {API_BASE_URL,ACCESS_TOKEN} from '../Constants';
 
-const request = (option) => {
+
+const request = (options) => {
     const headers = new Headers({
       'Content-Type':'application/json',
     })
@@ -8,11 +9,11 @@ const request = (option) => {
       headers.append('Authorization','Bearer '+localStorage.getItem(ACCESS_TOKEN));
     }
     const defaults = {headers: headers};
-    option = Object.assign({}, defaults,option);
+    options = Object.assign({}, defaults,options);
 
-    return fetch(option.url, option)
+    return fetch(options.url, options)
     .then(response =>
-      response.json.then(json => {
+      response.json().then(json => {
         if(!response.ok){
           return Promise.reject(json);
         }
