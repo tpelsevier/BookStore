@@ -56,7 +56,7 @@ class AboutUs extends React.Component {
                             <br />
                             <Panel bsStyle="info">
                                 <Panel.Heading>
-                                    <Panel.Title componentClass="h3">Ronak</Panel.Title>
+                                    <Panel.Title componentClass="h3">Ronak Amin</Panel.Title>
                                 </Panel.Heading>
                                 <ListGroup>
                                     <ListGroupItem>
@@ -87,6 +87,30 @@ class AboutUs extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
+                    <div>
+                        <Row>
+                            <Col sm={2} >
+                            </Col>
+                            <Col sm={8} >
+                                <Panel bsStyle="info">
+                                    <Panel.Heading>
+                                        <Panel.Title componentClass="h3">Ben Hancock</Panel.Title>
+                                    </Panel.Heading>
+                                    <ListGroup>
+                                        <ListGroupItem>
+                                            <div className="face">
+                                                <Image src={dummyFace} rounded alt="181x180" />
+                                            </div>
+                                        </ListGroupItem>
+                                        <ListGroupItem>Scrum Master</ListGroupItem>
+                                        <Panel.Body>Great scrum master. Hope he's having fun in Asia.</Panel.Body>
+                                    </ListGroup>
+                                </Panel>
+                            </Col>
+                            <Col sm={2} >
+                            </Col>
+                        </Row>
+                    </div>
                 </Grid>
             </div>
         );
