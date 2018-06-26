@@ -1,0 +1,15 @@
+
+
+.face img {
+    width: 100%;
+    height: auto;
+}
+
+.jumbotron1 {
+    background: linear-gradient(to bottom right, lightblue, #8cb8ff);
+}
+
+.container {
+    margin-left: 0;
+    margin-right: 0;
+}

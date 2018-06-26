@@ -1,0 +1,22 @@
+.navbar-brand {
+    transform: translate(0,5%);
+    display: inline-flex;
+}
+
+.container-fluid {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+
+.navbar-header {
+    position: relative;
+}
+
+h3 {
+    color:white;
+}
