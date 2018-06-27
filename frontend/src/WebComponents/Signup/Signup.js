@@ -44,8 +44,14 @@ export default class SignUp extends Component {
 
         signup(signupRequest)
         .then(response => {
-            //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-            console.log(response.success);
+            if (response.success == true){
+                // localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                // set logged in
+                this.props.history.push("Login");
+            }
+            else{
+                alert('invalid sign up');
+            }
         })
 
         
