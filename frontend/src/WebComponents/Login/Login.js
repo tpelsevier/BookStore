@@ -39,6 +39,7 @@ export default class Login extends Component {
                     if (response.error == "Unauthorized"){
                         alert('invalid email or password');
                     } else {
+                        console.log(response.accessToken)
                         this.props.history.push("home");
                     }
                     //localStorage.setItem(ACCESS_TOKEN, response.accessToken);

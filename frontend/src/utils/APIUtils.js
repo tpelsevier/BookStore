@@ -41,7 +41,7 @@ export function signup(signupRequest) {
 
 export function addToCart(itemRequest){
   return request({
-    url: API_BASE_URL+"/auth/shopping/addtocart",
+    url: API_BASE_URL+"/shopping/addtocart",
     method: 'POST',
     body: JSON.stringify(itemRequest)
   });
