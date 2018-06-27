@@ -1,47 +1,60 @@
-import {API_BASE_URL,ACCESS_TOKEN} from './Constants';
+import { API_BASE_URL, ACCESS_TOKEN } from './Constants';
 
 
 const request = (options) => {
-    const headers = new Headers({
-      'Content-Type':'application/json',
-    })
-    if(localStorage.getItem(ACCESS_TOKEN)){
-      headers.append('Authorization','Bearer '+localStorage.getItem(ACCESS_TOKEN));
-    }
-    const defaults = {headers: headers};
-    options = Object.assign({}, defaults,options);
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  })
+  console.log(localStorage.getItem(ACCESS_TOKEN));
+  var bearer = 'Bearer ' + localStorage.getItem(ACCESS_TOKEN);
 
-    return fetch(options.url, options)
-    .then(response =>
-      response.json().then(json => {
-        if(!response.ok){
-          return Promise.reject(json);
-        }
-        return json;
-      })
+  return fetch(options.url, {
+    method: 'GET',
+    withCredentials: true,
+    credentials: 'include',
+    headers: {
+      'Authorization': bearer,
+      'Content-Type': 'application/json'
+    }
+  }).then(responseJson => {
+    var items = JSON.parse(responseJson._bodyInit);
+  })
+    .catch(error => {
+
+    }
     );
+
+  // return fetch(options.url, options)
+  //   .then(response =>
+  //     response.json().then(json => {
+  //       if (!response.ok) {
+  //         return Promise.reject(json);
+  //       }
+  //       return json;
+  //     })
+  //   );
 };
 
 
 export function login(loginRequest) {
   return request({
-    url:API_BASE_URL+"/auth/login",
-    method:'POST',
-    body:JSON.stringify(loginRequest)
+    url: API_BASE_URL + "/auth/login",
+    method: 'POST',
+    body: JSON.stringify(loginRequest)
   });
 }
 
 export function signup(signupRequest) {
   return request({
-    url: API_BASE_URL +"/auth/register",
+    url: API_BASE_URL + "/auth/register",
     method: 'POST',
     body: JSON.stringify(signupRequest)
   });
 }
 
-export function addToCart(itemRequest){
+export function addToCart(itemRequest) {
   return request({
-    url: API_BASE_URL+"/auth/shopping/addtocart",
+    url: API_BASE_URL + "/auth/shopping/addtocart",
     method: 'POST',
     body: JSON.stringify(itemRequest)
   });
@@ -49,65 +62,66 @@ export function addToCart(itemRequest){
 
 //Get Current user profile
 export function getUserProfile() {
-  if(!checkHasLogin()){
+  console.log("fuck");
+  if (!checkHasLogin()) {
     return Promise.reject("No access token set.");
   }
   return request({
-    url: API_BASE_URL +"/user/profile",
+    url: API_BASE_URL + "/user/profile",
     method: 'GET'
   });
 }
 
 export function checkUserPassword(passwordRequest) {
-  if(!checkHasLogin()){
+  if (!checkHasLogin()) {
     return Promise.reject("No access token set.");
   }
   return request({
-    url: API_BASE_URL+"/user/checkUserPassword",
+    url: API_BASE_URL + "/user/checkUserPassword",
     method: 'POST',
     body: JSON.stringify(passwordRequest)
   });
 }
 
 export function getOrderHistory() {
-  if(!checkHasLogin()){
+  if (!checkHasLogin()) {
     return Promise.reject("No access token set.");
   }
   return request({
-    url: API_BASE_URL+"/user/orderhistory",
+    url: API_BASE_URL + "/user/orderhistory",
     method: 'GET'
   });
 }
 
-export function changeProfile(modifiedProfileRequest){
-  if(!checkHasLogin()){
+export function changeProfile(modifiedProfileRequest) {
+  if (!checkHasLogin()) {
     return Promise.reject("No access token set.");
   }
   return request({
-    url: API_BASE_URL+"/user/update",
+    url: API_BASE_URL + "/user/update",
     method: 'POST',
     body: JSON.stringify(modifiedProfileRequest)
   });
 }
 
-export function getItemInCart(){
-  if(!checkHasLogin()){
+export function getItemInCart() {
+  if (!checkHasLogin()) {
     return Promise("No acccess token set")
   }
   return request({
-    url: API_BASE_URL+"shopping",
+    url: API_BASE_URL + "shopping",
     method: 'GET'
   });
 }
-export function getItem(ISBN){
+export function getItem(ISBN) {
   return request({
-    url: API_BASE_URL+"/book/"+ISBN,
+    url: API_BASE_URL + "/book/" + ISBN,
     method: 'GET'
   })
 }
 
-function checkHasLogin(){
-  if(!localStorage.getItem(ACCESS_TOKEN)){
+function checkHasLogin() {
+  if (!localStorage.getItem(localStorage.ACCESS_TOKEN)) {
     return false;
   }
   return true;
