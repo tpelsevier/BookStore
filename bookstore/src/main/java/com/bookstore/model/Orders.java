@@ -26,6 +26,9 @@ public class Orders {
     @NotBlank
     private double price;
 
+    public Orders() {
+    	
+    }
     public Orders(int quant, Book book) {
         this.quant = quant;
         this.book = book;
