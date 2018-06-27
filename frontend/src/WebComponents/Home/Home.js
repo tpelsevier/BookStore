@@ -2,98 +2,6 @@ import React, { Component } from 'react';
 import { getBooks } from '../../utils/APIUtils';
 import { Panel, ListGroupItem, Row, Grid, Col, Jumbotron, Button, Image} from 'react-bootstrap';
 
-// const books = [
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     },
-//     {
-//         title: "Wimpy Kid",
-//         author: "Daniel",
-//         isbn: '978-3-16-148410-0'
-//     }
-// ];
-
-
-
-
-
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -102,6 +10,16 @@ class Home extends Component {
             organizedRows: [],
         };
     }
+
+    handleShowDetails(e) {
+        console.log(e.currentTarget.dataset.id)
+        // this.props.history.push("BookDetails");
+        this.props.history.push({
+            pathname: '/BookDetails',
+            state: { detail: e.currentTarget.dataset.id }
+          })
+    } 
+
     componentDidMount() {
         getBooks()
         .then(response => {
@@ -124,9 +42,9 @@ class Home extends Component {
                                 </div>
                             </ListGroupItem>
                             <ListGroupItem><b>Price:</b> {books[i].price}</ListGroupItem>
-                            <ListGroupItem><b>ISBN:</b> {books[i].isbn}</ListGroupItem>
+                            {/* <ListGroupItem><b>ISBN:</b> {books[i].isbn}</ListGroupItem> */}
                             <ListGroupItem>
-                                <Button bsStyle="primary">Details</Button>
+                                <Button onClick = {this.handleShowDetails.bind(this)} data-id={books[i].isbn} bsStyle="primary" >Details</Button>
                             </ListGroupItem>
                         </Panel>
                     );

@@ -101,7 +101,7 @@ export function getItemInCart(){
 }
 export function getItem(ISBN){
   return request({
-    url: API_BASE_URL+"/book/"+ISBN,
+    url: API_BASE_URL+"/books/"+ISBN,
     method: 'GET'
   })
 }
