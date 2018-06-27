@@ -1,2 +1,8 @@
-.gitignore
 bookstoreclient/node_modules
+.settings
+package.json.orig
+node_modules
+.project
+.classpath
+target
+application.properties

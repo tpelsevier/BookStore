@@ -42,9 +42,13 @@ export default class SignUp extends Component {
             confirmPassword: this.state.password
         };
 
-        const response = signup(signupRequest)
-        // redirect if successful
-        console.log(response)
+        signup(signupRequest)
+        .then(response => {
+            //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+            console.log(response.success);
+        })
+
+        
     }
 
     render() {

@@ -29,6 +29,17 @@ export default class Login extends Component {
         console.log(this.state.email);
         console.log(this.state.password);
 
+        const loginRequest = {
+            email: this.state.email,
+            password: this.state.password
+        };
+
+        login(loginRequest)
+                .then(response => {
+                    //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                    console.log(response.accessToken);
+                })
+
     }
 
     render() {

@@ -33,6 +33,10 @@ class UserProfile extends Component {
               '\nlast name: ' + this.state.lastName + 
               '\nemail: ' + this.state.email);
     }
+
+    handleChangePass() {
+        this.props.history.push("ChangePass");
+    } 
     
     render() {
       return (
@@ -65,7 +69,6 @@ class UserProfile extends Component {
                     </Col>
                 </FormGroup>
             </Form>
-
                 <ButtonGroup>
                     <Button onClick = {this.handleEditClik.bind(this)} bsSize="large" >
                     Edit
