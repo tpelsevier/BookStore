@@ -28,6 +28,10 @@ class UserProfile extends Component {
               '\nlast name: ' + this.state.lastName + 
               '\nemail: ' + this.state.email);
     }
+
+    handleChangePass() {
+        this.props.history.push("ChangePass");
+    } 
     
     render() {
       return (
@@ -67,6 +71,11 @@ class UserProfile extends Component {
                 <Button bsStyle="primary" disabled={this.state.disabled} onClick = {this.saveUserProfile.bind(this)} bsSize="large">
                 Save
                 </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+                    <Button onClick = {this.handleChangePass.bind(this)} bsSize="large" >
+                        Change Password
+                    </Button>
             </ButtonGroup>
         </div>
       );
