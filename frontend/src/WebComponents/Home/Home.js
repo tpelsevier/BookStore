@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getBooks } from '../../utils/APIUtils';
-import { Panel, ListGroupItem, Row, Grid, Col, Jumbotron, Button } from 'react-bootstrap';
+import { Panel, ListGroupItem, Row, Grid, Col, Jumbotron, Button, Image} from 'react-bootstrap';
 
 // const books = [
 //     {
@@ -112,14 +112,17 @@ class Home extends Component {
             for (var i = 0; i < books.length; i++) {
                 var row = [];
                 for (var x = 0; x < 4; x++) {
-                    // console.log(books[i].name)
-                    // console.log(books[i].price)
-                    // console.log(books[i].isbn)
+                    console.log(books)
                     row.push(
                         <Panel bsStyle="success">
                             <Panel.Heading>
                                 <Panel.Title componentClass="h3">{books[i].name}</Panel.Title>
                             </Panel.Heading>
+                            <ListGroupItem>
+                                <div className="face">
+                                    <Image src={books[i].imageUrl} rounded alt="181x180" />
+                                </div>
+                            </ListGroupItem>
                             <ListGroupItem><b>Price:</b> {books[i].price}</ListGroupItem>
                             <ListGroupItem><b>ISBN:</b> {books[i].isbn}</ListGroupItem>
                             <ListGroupItem>

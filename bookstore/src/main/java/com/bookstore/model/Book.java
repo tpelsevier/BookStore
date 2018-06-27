@@ -22,7 +22,15 @@ public class Book {
     @NotBlank
     private double price;
 
-    @NotBlank
+    public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	@NotBlank
     @Size(max = 200000)
     private String description;
 
