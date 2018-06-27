@@ -4,35 +4,25 @@ import { API_BASE_URL, ACCESS_TOKEN } from './Constants';
 const request = (options) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
-  })
+  }) 
   console.log(localStorage.getItem(ACCESS_TOKEN));
-  var bearer = 'Bearer ' + localStorage.getItem(ACCESS_TOKEN);
+  if (localStorage.getItem(ACCESS_TOKEN)) {
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+  }
+  
+  console.log(headers.get('Authorization'));
+  const defaults = { headers: headers };
+  options = Object.assign({}, defaults, options);
 
-  return fetch(options.url, {
-    method: 'GET',
-    withCredentials: true,
-    credentials: 'include',
-    headers: {
-      'Authorization': bearer,
-      'Content-Type': 'application/json'
-    }
-  }).then(responseJson => {
-    var items = JSON.parse(responseJson._bodyInit);
-  })
-    .catch(error => {
-
-    }
+  return fetch(options.url, options)
+    .then(response =>
+      response.json().then(json => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
+        return json;
+      })
     );
-
-  // return fetch(options.url, options)
-  //   .then(response =>
-  //     response.json().then(json => {
-  //       if (!response.ok) {
-  //         return Promise.reject(json);
-  //       }
-  //       return json;
-  //     })
-  //   );
 };
 
 
@@ -62,13 +52,12 @@ export function addToCart(itemRequest) {
 
 //Get Current user profile
 export function getUserProfile() {
-  console.log("fuck");
   if (!checkHasLogin()) {
     return Promise.reject("No access token set.");
   }
   return request({
     url: API_BASE_URL + "/user/profile",
-    method: 'GET'
+    method: 'POST'
   });
 }
 
