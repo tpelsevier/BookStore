@@ -53,11 +53,13 @@ export function addToCart(itemRequest) {
 //Get Current user profile
 export function getUserProfile() {
   if (!checkHasLogin()) {
+    console.log("login check fail")
     return Promise.reject("No access token set.");
   }
   return request({
     url: API_BASE_URL + "/user/profile",
-    method: 'POST'
+    method: 'GET',
+    headers: {"Authorization": "Bearer " + localStorage.ACCESS_TOKEN}
   });
 }
 
@@ -118,7 +120,8 @@ export function getBooks(){
 
 
 function checkHasLogin(){
-  if(!localStorage.getItem(ACCESS_TOKEN)){
+  console.log("ACCESS TOKEN" + localStorage.ACCESS_TOKEN)
+  if(!localStorage.ACCESS_TOKEN){
     return false;
   }
   return true;

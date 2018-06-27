@@ -38,6 +38,7 @@ export default class Login extends Component {
         login(loginRequest)
                 .then(response => {
                     
+                    localStorage.ACCESS_TOKEN = response.accessToken
                     localStorage.setItem(localStorage.ACCESS_TOKEN, response.accessToken);
                     this.props.onLogin();
                     this.props.history.push("Home");    
