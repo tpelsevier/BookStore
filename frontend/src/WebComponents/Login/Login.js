@@ -4,6 +4,7 @@ import { login } from '../../utils/APIUtils';
 import { ACCESS_TOKEN } from '../../utils/Constants';
 import "./Login.css";
 
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -36,6 +37,11 @@ export default class Login extends Component {
 
         login(loginRequest)
                 .then(response => {
+                    
+                    localStorage.setItem(localStorage.ACCESS_TOKEN, response.accessToken);
+                    this.props.onLogin();
+                    this.props.history.push("Home");    
+                    console.log('hi');  
                     if (response.error == "Unauthorized"){
                         alert('invalid email or password');
                     } else {

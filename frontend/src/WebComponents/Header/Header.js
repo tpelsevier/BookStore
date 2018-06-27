@@ -29,6 +29,24 @@ class Header extends React.Component {
     }
 
     render() {
+        let loggedInOrNot;
+        if (this.props.currentUser) {
+            loggedInOrNot = [
+                <NavItem eventKey={4}>
+                    <Link to="/Profile"> Profile </Link>
+                </NavItem>
+            ];
+        }
+        else {
+            loggedInOrNot = [
+                <NavItem eventKey={4}>
+                    <Link to="/Signup"> Sign Up </Link>
+                </NavItem>,
+                <NavItem eventKey={5}>
+                    <Link to="/login"> Log In </Link>
+                </NavItem>
+            ];
+        }
         return (
             <Navbar inverse collapseOnSelect fluid staticTop >
                 <Navbar.Header>
@@ -44,7 +62,7 @@ class Header extends React.Component {
                     <Nav pullLeft>
                         <form onSubmit={this.handleSubmit}>
                             <label>
-                            <input type="text" value={this.state.value} onChange={this.handleChange} />
+                                <input type="text" value={this.state.value} onChange={this.handleChange} />
                             </label>
                             <input type="submit" value="Submit" />
                         </form>
@@ -59,12 +77,7 @@ class Header extends React.Component {
                         <NavItem eventKey={3} >
                             <Link to="/bookdetails">Book Details</Link>
                         </NavItem>
-                        <NavItem eventKey={4}>
-                            <Link to="/Signup"> Sign Up </Link>
-                        </NavItem>
-                        <NavItem eventKey={5}>
-                            <Link to="/login"> Log In </Link>
-                        </NavItem>
+                        {loggedInOrNot}
                         <NavItem eventKey={6}>
                             <Link to="/checkout">
                                 <img src={cart} className="cart" alt="logo" />
