@@ -106,6 +106,14 @@ export function getItem(ISBN){
   })
 }
 
+export function getBooks(){
+  return request({
+    url: API_BASE_URL+"/books/",
+    method: 'GET'
+  })
+}
+
+
 function checkHasLogin(){
   if(!localStorage.getItem(ACCESS_TOKEN)){
     return false;
