@@ -7,6 +7,10 @@ import java.util.Set;
 
 @Entity
 public class Address {
+	
+	public Address() {
+		
+	}
 
     @GeneratedValue()
     @Id

@@ -30,6 +30,7 @@ class Header extends React.Component {
 
     render() {
         let loggedInOrNot;
+        console.log("HEADER CURRENT USER" + this.props.currentUser)
         if (this.props.currentUser) {
             loggedInOrNot = [
                 <NavItem eventKey={4}>

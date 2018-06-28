@@ -13,7 +13,6 @@ const request = (options) => {
     headers.append('Authorization', 'Bearer ' + localStorage.ACCESS_TOKEN)
   }
   
-  console.log(headers.get('Authorization'));
   const defaults = { headers: headers };
   options = Object.assign({}, defaults, options);
 
@@ -102,7 +101,7 @@ export function getItemInCart() {
     return Promise("No acccess token set")
   }
   return request({
-    url: API_BASE_URL + "shopping",
+    url: API_BASE_URL + "/shopping",
     method: 'GET'
   });
 }
@@ -120,9 +119,7 @@ export function getBooks(){
   })
 }
 
-
 function checkHasLogin(){
-  console.log("ACCESS TOKEN" + localStorage.ACCESS_TOKEN)
   if(!localStorage.ACCESS_TOKEN){
     return false;
   }

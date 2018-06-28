@@ -8,6 +8,10 @@ import java.util.List;
 
 @Entity
 public class OrderHistory {
+	
+	public OrderHistory() {
+		
+	}
     @Id
     private Long id;
 
