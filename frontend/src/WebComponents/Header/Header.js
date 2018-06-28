@@ -51,6 +51,7 @@ class Header extends React.Component {
                 </NavItem>
             ];
         }
+        
         return (
             <Navbar inverse collapseOnSelect fluid staticTop >
                 <Navbar.Header>
@@ -64,6 +65,7 @@ class Header extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullLeft>
+
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 <input type="text" value={this.state.value} onChange={this.handleChange} />
