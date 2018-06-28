@@ -13,7 +13,6 @@ import Home from './WebComponents/Home/Home';
 import UserProfile from './WebComponents/UserProfile/UserProfile';
 import ChangePass from './WebComponents/ChangePass/changePass';
 import Checkout from './WebComponents/Checkout/Checkout';
-import Profile from './WebComponents/Profile/Prolfile';
 
 class App extends Component {
 
@@ -91,7 +90,7 @@ class App extends Component {
               <Route exact path='/UserProfile' component={UserProfile}/>
               <Route exact path='/ChangePass' component={ChangePass}/>
               <Route exact path='/checkout' component={Checkout}/>
-              <Route path='/users/:username'
+              <Route path='/user'
                 render={(props) => <UserProfile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
               >
               </Route>

@@ -34,7 +34,7 @@ class Header extends React.Component {
         if (this.props.currentUser) {
             loggedInOrNot = [
                 <NavItem eventKey={4}>
-                    <Link to="/Profile"> Profile </Link>
+                    <Link to="/user"> Profile </Link>
                 </NavItem>,
                 <NavItem eventKey={5}>
                     Logout
