@@ -18,14 +18,26 @@ public class Orders {
     @ColumnDefault(value = "1")
     private int quant;
 
-    @NotBlank
+   // @NotBlank
     @OneToOne(cascade=CascadeType.ALL)
     private Book book;
 
-    @NotBlank
+   // @NotBlank
     private double price;
 
-    public Orders() {
+    public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
+	}
+	public Orders() {
     	
     }
     public Orders(int quant, Book book) {

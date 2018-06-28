@@ -9,18 +9,22 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
+	
+	public Book() {
+		
+	}
 
     @Id
-    private String ISBN;
+    private String isbn;
 
-    @NotBlank
+   // @NotBlank
     private String imageUrl;
 
-    @NotBlank
+   // @NotBlank
     @Size(max = 100)
     private String name;
 
-    @NotBlank
+   // @NotBlank
     private double price;
 
     public String getImageUrl() {
@@ -31,20 +35,21 @@ public class Book {
 		this.imageUrl = imageUrl;
 	}
 
-	@NotBlank
+//	@NotBlank
     @Size(max = 200000)
     private String description;
 
 
-    public String getISBN() {
-        return ISBN;
-    }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
+    public String getIsbn() {
+		return isbn;
+	}
 
-    public String getName() {
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getName() {
         return name;
     }
 

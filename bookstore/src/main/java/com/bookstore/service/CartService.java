@@ -26,12 +26,29 @@ public class CartService {
     BookRepository bookRepository;
 
     public void addOrder(Users user, AddToCartRequest order){
-        Book bookInOrder = bookRepository.findBookByISBN(order.getBook().getISBN())
-                .orElseThrow(()-> new ResourceNotFoundException("Book","ISBN",order.getBook().getISBN()));
+        Book bookInOrder = bookRepository.findBookByISBN(order.getBook().getIsbn())
+                .orElseThrow(()-> new ResourceNotFoundException("Book","ISBN",order.getBook().getIsbn()));
     	Orders orders = new Orders(order.getQuantity(),bookInOrder);
-
+    	
+    	System.out.println("order price" + bookInOrder.getPrice());
+    	
+    	
         user.getOrders().add(orders);
+        
         userRepository.save(user);
+        orders.setUser(user);
+        orderRepository.save(orders);
+        
+//        for(Orders od : user.getOrders()) {
+//        	
+//        	od.setUser(user);
+//        	od.setPrice();
+//        	orderRepository.save(od);
+//        	//userRepository.save(user);
+//        }
+//        
+       // userRepository.save(user);
+        
     }
 
 }

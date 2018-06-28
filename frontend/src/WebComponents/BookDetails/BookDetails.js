@@ -17,14 +17,16 @@ class BookDetails extends React.Component {
     }
 
     handleAddToCart(){
+        console.log(typeof(this.props.location.state.detail))
         const addToCartRequest = {
-            book:{ 
-                ISBN: this.props.location.state.detail,
-                imageUrl: this.state.imageUrl,
-                name:this.state.name,
-                price:this.state.price,
-                description:this.state.description
+            book:{
+                isbn:this.props.location.state.detail,
+                imageUrl:this.state.imageUrl,
+                price: this.state.price,
+                name: this.state.name,
+                description: this.state.description
             },
+            //isbn: this.props.location.state.detail,
             quantity: 1
         };
 
