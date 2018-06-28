@@ -7,7 +7,7 @@ import './AboutUs.css';
 class AboutUs extends React.Component {
     render() {
         return (
-            <div>
+            <div className ="">
 
                 <Grid>
                     <Jumbotron className="jumbotron1">

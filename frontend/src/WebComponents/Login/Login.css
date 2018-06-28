@@ -1,10 +1,19 @@
 @media all and (min-width: 480px) {
     .Login {
       padding: 60px 0;
+      border-radius: 45px 45px;
     }
   
     .Login form {
       margin: 0 auto;
       max-width: 320px;
     }
+  }
+
+  .right{
+    float: right;
+  }
+
+  .round{
+    border-radius:10;
   }

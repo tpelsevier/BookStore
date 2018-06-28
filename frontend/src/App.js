@@ -86,7 +86,7 @@ class App extends Component {
               <Route exact path='/UserProfile' component={UserProfile}/>
               <Route exact path='/ChangePass' component={ChangePass}/>
               <Route exact path='/checkout' component={Checkout}/>
-              <Route path='/users/:username'
+              <Route path='/users'
                 render={(props) => <UserProfile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
               >
               </Route>

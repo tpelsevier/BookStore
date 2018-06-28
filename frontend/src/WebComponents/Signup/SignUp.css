@@ -12,3 +12,24 @@
 boxThisFormThough {
   max-width: 500px;
 } */
+
+a.blue {
+  color: blue;
+  size:50em;
+  text-transform: uppercase;
+}
+
+.spaceTitle{
+  padding-bottom: 10px;
+}
+
+.backgroundGradient{
+    background: linear-gradient( rgb(70, 195, 236),rgb(5, 123, 155));
+    padding-bottom: 400px;
+    padding-top:50px;
+    
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
