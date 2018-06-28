@@ -42,6 +42,7 @@ export default class Login extends Component {
         };
 
         login(loginRequest)
+<<<<<<< HEAD
             .then(response => {
 
                 localStorage.ACCESS_TOKEN = response.accessToken
@@ -57,6 +58,22 @@ export default class Login extends Component {
                 }
                 //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
             })
+=======
+                .then(response => {
+                    
+                    localStorage.ACCESS_TOKEN = response.accessToken
+                    //localStorage.setItem(localStorage.ACCESS_TOKEN, response.accessToken);
+                    this.props.onLogin();
+                    this.props.history.push("Home");    
+                    if (response.error == "Unauthorized"){
+                        alert('invalid email or password');
+                    } else {
+                        console.log(response.accessToken)
+                        this.props.history.push("home");
+                    }
+                    //localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                })
+>>>>>>> bcda0f074b019508e5a4c1033fe586e814283983
     }
 
     render() {

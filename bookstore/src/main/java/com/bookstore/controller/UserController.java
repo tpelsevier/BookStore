@@ -52,9 +52,9 @@ public class UserController {
     public ResponseEntity<?> modifyProfile(@CurrentUser UserPrincipal userPrincipal,
                                            @Valid @RequestBody ModifiedProfile modifiedProfile){
 
-        if(!checkPassword(modifiedProfile,userPrincipal)) {
-            return new ResponseEntity<>(new ApiResponse(false,"Invalid password enter"),HttpStatus.OK);
-        }
+//        if(!checkPassword(modifiedProfile,userPrincipal)) {
+//            return new ResponseEntity<>(new ApiResponse(false,"Invalid password enter"),HttpStatus.OK);
+//        }
         Users user = userService.getUser(userPrincipal.getEmail());
         if(modifiedProfile.getFirstName() != null && !StringUtils.isEmpty(modifiedProfile.getFirstName())){
             user.setFirstName(modifiedProfile.getFirstName());
@@ -65,9 +65,9 @@ public class UserController {
         if (modifiedProfile.getEmail() != null && !StringUtils.isEmpty(modifiedProfile.getEmail())) {
             user.setEmail(modifiedProfile.getEmail());
         }
-        if(modifiedProfile.getPassword() != null && !StringUtils.isEmpty(modifiedProfile.getPassword())){
-            user.setPassword(modifiedProfile.getPassword());
-        }
+//        if(modifiedProfile.getPassword() != null && !StringUtils.isEmpty(modifiedProfile.getPassword())){
+//            user.setPassword(passwordEncoder.encode(modifiedProfile.getPassword()));
+//        }
 
         userService.save(user);
         return new ResponseEntity<>(new ApiResponse(true,"User modifed successfully"),HttpStatus.OK);
@@ -82,12 +82,12 @@ public class UserController {
         }
         return new ResponseEntity<>(new ApiResponse(true,"Correct password enter"),HttpStatus.OK);
     }
-    private boolean checkPassword(ModifiedProfile modifiedProfile,UserPrincipal userPrincipal){
-        Users user = userService.getUser(userPrincipal.getEmail());
-        if(!passwordEncoder.matches(modifiedProfile.getOldPassword(),user.getPassword())) {
-            return false;
-        }
-        return true;
-    }
+//    private boolean checkPassword(ModifiedProfile modifiedProfile,UserPrincipal userPrincipal){
+//        Users user = userService.getUser(userPrincipal.getEmail());
+//        if(!passwordEncoder.matches(modifiedProfile.getOldPassword(),user.getPassword())) {
+//            return false;
+//        }
+//        return true;
+//    }
 
 }

@@ -18,8 +18,10 @@ class Header extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value
+        });
     }
 
     handleSubmit(event) {
@@ -33,20 +35,21 @@ class Header extends React.Component {
         console.log("HEADER CURRENT USER" + this.props.currentUser)
         if (this.props.currentUser) {
             loggedInOrNot = [
-                <NavItem eventKey={4}>
-                    <Link to="/user"> Profile </Link>
+                <NavItem eventKey={1}>
+                    <Link to={{pathname:'/user', state:{currentUser: this.props.currentUser} }}> Profile </Link>
                 </NavItem>,
-                <NavItem eventKey={5}>
-                    Logout
+                <NavItem onClick={this.props.onLogout} eventKey={2}>
+                Logout   
                 </NavItem>
+                
             ];
         }
         else {
             loggedInOrNot = [
-                <NavItem eventKey={4}>
+                <NavItem eventKey={3}>
                     <Link to="/Signup"> Sign Up </Link>
                 </NavItem>,
-                <NavItem onClick={this.props.handleLogout} eventKey={5} >
+                <NavItem  eventKey={4} >
                     <Link to="/login"> Log In </Link>
                 </NavItem>
             ];
@@ -74,14 +77,14 @@ class Header extends React.Component {
                         </form>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem eventKey={1} >
+                        <NavItem eventKey={5} >
                             <Link to="/home">Home</Link>
                         </NavItem>
-                        <NavItem eventKey={2} >
+                        <NavItem eventKey={6} >
                             <Link to="/about_us">About Us</Link>
                         </NavItem>
                         {loggedInOrNot}
-                        <NavItem eventKey={6}>
+                        <NavItem eventKey={7}>
                             <Link to="/checkout">
                                 <img src={cart} className="cart" alt="logo" />
                             </Link>
