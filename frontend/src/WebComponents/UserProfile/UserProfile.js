@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Button, FormControl, Col, ControlLabel, ButtonGroup, ButtonToolbar, Navbar } from 'react-bootstrap';
 import {withRouter} from "react-router-dom";
+import { changeProfile, getUserProfile } from '../../utils/APIUtils';
 
 class UserProfile extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        firstName: this.props.location.state.currentUser.firstName,
-        lastName: this.props.location.state.currentUser.lastName,
-        email: this.props.location.state.currentUser.email,
+        firstName: "",
+        lastName: "",
+        email: "",
         disabled: true
       };
       this.handleChange = this.handleChange.bind(this);
     }
-  
+
+    componentDidMount() {
+        getUserProfile()
+        .then(response => {
+            this.setState({
+                firstName: response.firstName,
+                lastName: response.lastName,
+                email: response.email,
+              });
+        })
+    }  
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
@@ -25,11 +36,18 @@ class UserProfile extends Component {
       } 
 
     handleChangePass() {
-        
         this.props.history.push("ChangePass");
     } 
 
     saveUserProfile(){
+        const modifyProfileRequest = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+
+        };
+        changeProfile(modifyProfileRequest)
+        
         // call API to save here
         alert('Updated User Info: \nfirst name: ' + this.state.firstName +
               '\nlast name: ' + this.state.lastName + 
