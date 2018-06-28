@@ -2,7 +2,7 @@ import './BookDetails.css';
 import React, { Component } from 'react';
 import { Row, Col, Grid, Thumbnail, Button, Panel} from 'react-bootstrap';
 import cover from './cover.webp';
-import { getItem } from '../../utils/APIUtils';
+import { getItem, addToCart} from '../../utils/APIUtils';
 
 class BookDetails extends React.Component {
     constructor(props) {
@@ -14,6 +14,21 @@ class BookDetails extends React.Component {
             description:"",
             price:""
         };
+    }
+
+    handleAddToCart(){
+        const addToCartRequest = {
+            book:{ 
+                ISBN: this.props.location.state.detail,
+                imageUrl: this.state.imageUrl,
+                name:this.state.name,
+                price:this.state.price,
+                description:this.state.description
+            },
+            quantity: 1
+        };
+
+        addToCart(addToCartRequest)
     }
 
     componentDidMount(){
@@ -37,7 +52,7 @@ class BookDetails extends React.Component {
                             <h4>{this.state.name}</h4>
                             <p>{this.state.price}</p>
                             <p>
-                            <Button bsStyle="primary">Add To Cart</Button>&nbsp;
+                            <Button onClick = {this.handleAddToCart.bind(this)} bsStyle="primary">Add To Cart</Button>&nbsp;
                             </p>
                         </Thumbnail>
                     </Col>
@@ -56,29 +71,6 @@ class BookDetails extends React.Component {
                     </Col>
                 </Row>
             </Grid>
-            // <div>
-            //     <Panel bsStyle="info">
-            //         <Panel.Heading>
-            //             <Panel.Title componentClass="h3">Book Title</Panel.Title>
-            //         </Panel.Heading>
-            //         <ListGroup>
-            //             <ListGroupItem>
-            //                 <div class="face">
-            //                     <img src={cover} />
-            //                 </div>
-            //             </ListGroupItem>
-            //             <ListGroupItem>Author</ListGroupItem>
-            //             <ListGroupItem>Price</ListGroupItem>
-            //             <ListGroupItem>Etc...</ListGroupItem>
-            //             <Panel.Body>Book Description</Panel.Body>
-            //         </ListGroup>
-            //     </Panel>
-            //     <Link to="/BookDetails">
-            //     <button type="button">
-            //         Add To Cart
-            //     </button>
-            //     </Link>
-            // </div>
         );
     }
 }

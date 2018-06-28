@@ -6,8 +6,11 @@ const request = (options) => {
     'Content-Type': 'application/json',
   }) 
   console.log(localStorage.getItem(ACCESS_TOKEN));
-  if (localStorage.getItem(ACCESS_TOKEN)) {
-    headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+  // if (localStorage.getItem(ACCESS_TOKEN)) {
+  //   headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+  // }
+  if (localStorage.ACCESS_TOKEN) {
+    headers.append('Authorization', 'Bearer ' + localStorage.ACCESS_TOKEN)
   }
   
   console.log(headers.get('Authorization'));
@@ -58,8 +61,7 @@ export function getUserProfile() {
   }
   return request({
     url: API_BASE_URL + "/user/profile",
-    method: 'GET',
-    headers: {"Authorization": "Bearer " + localStorage.ACCESS_TOKEN}
+    method: 'GET'
   });
 }
 
