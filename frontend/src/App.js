@@ -48,7 +48,7 @@ class App extends Component {
     });
   }
 
-  handleLogout(redirectTo="/", notificationType="success", description="You're successfully logged out.") {
+  handleLogout(redirectTo="/home", notificationType="success", description="You're successfully logged out.") {
     localStorage.removeItem(localStorage.ACCESS_TOKEN);
 
     this.setState({
@@ -57,11 +57,6 @@ class App extends Component {
     });
 
     this.props.history.push(redirectTo);
-    
-    notification[notificationType]({
-      message: 'Polling App',
-      description: description,
-    });
   }
 
   handleLogin() {
@@ -76,7 +71,8 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header>
-            <Header currentUser={this.state.currentUser}/>
+            <Header currentUser={this.state.currentUser}
+            onLogout={this.handleLogout}/>
           </header>
           <main>
             <Switch>
@@ -90,7 +86,7 @@ class App extends Component {
               <Route exact path='/UserProfile' component={UserProfile}/>
               <Route exact path='/ChangePass' component={ChangePass}/>
               <Route exact path='/checkout' component={Checkout}/>
-              <Route path='/user'
+              <Route path='/users/:username'
                 render={(props) => <UserProfile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
               >
               </Route>

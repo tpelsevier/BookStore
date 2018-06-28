@@ -46,7 +46,7 @@ class Header extends React.Component {
                 <NavItem eventKey={4}>
                     <Link to="/Signup"> Sign Up </Link>
                 </NavItem>,
-                <NavItem eventKey={5}>
+                <NavItem onClick={this.props.handleLogout} eventKey={5} >
                     <Link to="/login"> Log In </Link>
                 </NavItem>
             ];

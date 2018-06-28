@@ -4,32 +4,25 @@ import { API_BASE_URL, ACCESS_TOKEN } from './Constants';
 const request = (options) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
-  }) 
-  console.log(localStorage.getItem(ACCESS_TOKEN));
-  // if (localStorage.getItem(ACCESS_TOKEN)) {
-  //   headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-  // }
-  if (localStorage.ACCESS_TOKEN) {
+    'Authorization' : 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNTMwMTk4MjgwLCJleHAiOjE1MzA4MDMwODB9.JCLr6bstWP1DQ98oOtPjauK9ArvEM6-UpEFFDyvIF80ei_acu3iGD-xgLIcOaJWHKpDH-MuMcQ0o0PB3f2fIBA'
+})
+
+if(localStorage.ACCESS_TOKEN) {
     headers.append('Authorization', 'Bearer ' + localStorage.ACCESS_TOKEN)
-  }
-  
-  const defaults = { headers: headers };
-  options = Object.assign({}, defaults, options);
+}
 
-  const iterate = options.headers.values();
-  for (let n in iterate){
-    console.log("dude" + n.value);
-  }
+const defaults = {headers: headers};
+options = Object.assign({}, defaults, options);
 
-  return fetch(options.url, options)
-    .then(response =>
-      response.json().then(json => {
-        if (!response.ok) {
-          return Promise.reject(json);
+return fetch(options.url, options)
+.then(response => 
+    response.json().then(json => {
+        if(!response.ok) {
+            return Promise.reject(json);
         }
         return json;
-      })
-    );
+    })
+);
 };
 
 
@@ -65,7 +58,8 @@ export function getUserProfile() {
   }
   return request({
     url: API_BASE_URL + "/user/profile",
-    method: 'GET'
+    method: 'GET',
+    headers: {'Authorization' : 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNTMwMTk4MjgwLCJleHAiOjE1MzA4MDMwODB9.JCLr6bstWP1DQ98oOtPjauK9ArvEM6-UpEFFDyvIF80ei_acu3iGD-xgLIcOaJWHKpDH-MuMcQ0o0PB3f2fIBA'}
   });
 }
 

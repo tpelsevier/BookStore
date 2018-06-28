@@ -24,6 +24,7 @@ class Checkout extends React.Component {
         this.billingAddres = this.billingAddres.bind(this);
         this.paymentMethod = this.paymentMethod.bind(this);
         this.reviewOrder = this.reviewOrder.bind(this);
+        this.mailingAddres = this.mailingAddres.bind(this);
 
     }
 
@@ -43,11 +44,13 @@ class Checkout extends React.Component {
                             {this.billingAddres()}
                         </Col>
                         <Col xs={6} md={4}>
-                            <h4>2. Payment Method</h4>
+                            <h4>2. Mailing Address</h4>
+                            {this.mailingAddres()}
+                            <h4>3. Payment Method</h4>
                             {this.paymentMethod()}
                         </Col>
                         <Col xsHidden md={4}>
-                            <h4>3. Review Your Order</h4>
+                            <h4>4. Review Your Order</h4>
                             {this.reviewOrder()}
                         </Col>
                     </Row>
@@ -111,6 +114,48 @@ class Checkout extends React.Component {
                     </FormGroup>
                 </ListGroupItem>
             </ListGroup>
+        );
+    }
+
+    mailingAddres(){
+        return(
+            <ListGroup>
+        <ListGroupItem>
+            <FormGroup controlId="firstName" bsSize="large">
+                <ControlLabel>First Name: </ControlLabel>
+                <FormControl
+                    autoFocus
+                    type="firstName"
+                    value={this.state.firstName}
+                    onChange={this.handleChange}
+                />
+            </FormGroup>
+            <FormGroup controlId="lastName" bsSize="large">
+                <ControlLabel>Last Name:</ControlLabel>
+                <FormControl
+                    value={this.state.lastName}
+                    onChange={this.handleChange}
+                    type="lastName"
+                />
+            </FormGroup>
+            <FormGroup controlId="street_address" bsSize="large">
+                <ControlLabel>Address:</ControlLabel>
+                <FormControl
+                    value={this.state.street_address}
+                    onChange={this.handleChange}
+                    type="street_address"
+                />
+            </FormGroup>
+            <FormGroup controlId="zip_code" bsSize="large">
+                <ControlLabel>Zip Code:</ControlLabel>
+                <FormControl
+                    value={this.state.zip_code}
+                    onChange={this.handleChange}
+                    type="zip_code"
+                />
+            </FormGroup>
+        </ListGroupItem>
+    </ListGroup>
         );
     }
 
