@@ -12,8 +12,10 @@ public class Orders {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private Users user;
+
+   // private int userId;
 
     @ColumnDefault(value = "1")
     private int quant;

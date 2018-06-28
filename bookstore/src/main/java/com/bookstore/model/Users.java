@@ -14,7 +14,8 @@ import java.util.Set;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    //@Column(name="usrID")
     private Long id;
 
     @NotBlank
