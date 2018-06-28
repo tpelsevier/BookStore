@@ -47,11 +47,13 @@ class UserProfile extends Component {
 
         };
         changeProfile(modifyProfileRequest)
-        
-        // call API to save here
-        alert('Updated User Info: \nfirst name: ' + this.state.firstName +
+        .then(response => {
+            if (response.state==true){
+            alert('Updated User Info: \nfirst name: ' + this.state.firstName +
               '\nlast name: ' + this.state.lastName + 
               '\nemail: ' + this.state.email);
+            }
+        })
     }
 
     handleChangePass() {
@@ -85,7 +87,7 @@ class UserProfile extends Component {
                     Email
                     </Col>
                     <Col sm={6}>
-                    <FormControl inputRef={input => this.email = input} disabled={this.state.disabled} type="email" defaultValue={this.state.email} onChange={this.handleChange}/>
+                    <FormControl inputRef={input => this.email = input} disabled="true" type="email" defaultValue={this.state.email} onChange={this.handleChange}/>
                     </Col>
                 </FormGroup>
             </Form>
