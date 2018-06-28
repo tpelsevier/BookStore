@@ -8,7 +8,27 @@ import java.util.List;
 import java.util.Set;
 
 public class CheckCartResponse {
-    private double total ;
+    public double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
+	}
+
+
+	private double total ;
     Set<Orders> orders;
 
 
