@@ -42,6 +42,7 @@ class App extends Component {
         isLoading: false
       });
       console.log("hey");
+
     }).catch(error => {
       this.setState({
         isLoading: false
@@ -77,7 +78,8 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header>
-            <Header />
+            <Header currentUser={this.state.currentUser}
+            isAuthenticated={this.state.isAuthenticated}/>
           </header>
           <main>
             <Switch>

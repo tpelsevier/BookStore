@@ -13,9 +13,15 @@ const request = (options) => {
     headers.append('Authorization', 'Bearer ' + localStorage.ACCESS_TOKEN)
   }
   
-  console.log(headers.get('Authorization'));
+
+  console.log('this is the authh' +headers.get('Authorization'));
   const defaults = { headers: headers };
   options = Object.assign({}, defaults, options);
+
+  const iterate = options.headers.values();
+  for (let n in iterate){
+    console.log("dude" + n.value);
+  }
 
   return fetch(options.url, options)
     .then(response =>

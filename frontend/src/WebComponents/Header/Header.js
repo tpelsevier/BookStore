@@ -34,6 +34,9 @@ class Header extends React.Component {
             loggedInOrNot = [
                 <NavItem eventKey={4}>
                     <Link to="/Profile"> Profile </Link>
+                </NavItem>,
+                <NavItem eventKey={5}>
+                    Logout
                 </NavItem>
             ];
         }
