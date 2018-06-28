@@ -16,6 +16,11 @@ const request = (options) => {
   const defaults = { headers: headers };
   options = Object.assign({}, defaults, options);
 
+  const iterate = options.headers.values();
+  for (let n in iterate){
+    console.log("dude" + n.value);
+  }
+
   return fetch(options.url, options)
     .then(response =>
       response.json().then(json => {

@@ -55,7 +55,7 @@ public class Users {
         this.orders = orders;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "id")
     private Set<Orders> orders = new HashSet<>();
 
 

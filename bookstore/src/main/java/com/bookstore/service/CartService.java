@@ -16,15 +16,10 @@ public class CartService {
 
     @Autowired
     UserRepository userRepository;
-    
-    @Autowired
-    OrderRepository orderRepository;
 
     public void addOrder(Users user, AddToCartRequest order){
-    	Orders orders = new Orders(user, order.getQuantity(),order.getBook());
-        user.getOrders().add(orders);
+        user.getOrders().add(new Orders(order.getQuantity(),order.getBook()));
         userRepository.save(user);
-        // orderRepository.save(orders);
     }
 
 }

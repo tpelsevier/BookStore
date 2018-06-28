@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 @Entity
 public class Book {
 
-
     @Id
     private String ISBN;
 
@@ -22,11 +21,7 @@ public class Book {
 
     @NotBlank
     private double price;
-    
-    
-    public Book() {
-    	
-    }
+
     public String getImageUrl() {
 		return imageUrl;
 	}
