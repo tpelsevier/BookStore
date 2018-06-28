@@ -6,7 +6,6 @@ class UserProfile extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        
         firstName: 'test first name',
         lastName: 'test last name',
         email: 'test email',

@@ -2,7 +2,9 @@ package com.bookstore.model;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class Orders {
     @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
@@ -20,7 +23,7 @@ public class Orders {
     private int quant;
 
     @NotBlank
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Book book;
 
     @NotBlank
