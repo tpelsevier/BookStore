@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Grid, Row, Form, ListGroup, ListGroupItem, ControlLabel, FormGroup, FormControl, Button, Jumbotron } from 'react-bootstrap';
 import './Checkout.css';
+import { getItemInCart } from '../../utils/APIUtils';
 
 
 
@@ -56,6 +57,12 @@ class Checkout extends React.Component {
     }
 
     reviewOrder() {
+
+        getItemInCart()
+        .then(response => {
+            console.log(response)
+        })
+        
         return (
             <ListGroup>
                 <ListGroupItem href="#link1">Link 1</ListGroupItem>

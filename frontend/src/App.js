@@ -36,13 +36,12 @@ class App extends Component {
     });
     getUserProfile()
     .then(response => {
+      console.log(response)
       this.setState({
         currentUser: response,
         isAuthenticated: true,
         isLoading: false
       });
-      console.log("hey");
-
     }).catch(error => {
       this.setState({
         isLoading: false
@@ -78,8 +77,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header>
-            <Header currentUser={this.state.currentUser}
-            isAuthenticated={this.state.isAuthenticated}/>
+            <Header currentUser={this.state.currentUser}/>
           </header>
           <main>
             <Switch>
