@@ -39,10 +39,9 @@ export default class Login extends Component {
                 .then(response => {
                     
                     localStorage.ACCESS_TOKEN = response.accessToken
-                    localStorage.setItem(localStorage.ACCESS_TOKEN, response.accessToken);
+                    //localStorage.setItem(localStorage.ACCESS_TOKEN, response.accessToken);
                     this.props.onLogin();
                     this.props.history.push("Home");    
-                    console.log('hi');  
                     if (response.error == "Unauthorized"){
                         alert('invalid email or password');
                     } else {

@@ -18,8 +18,10 @@ class Header extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value
+        });
     }
 
     handleSubmit(event) {
@@ -34,12 +36,12 @@ class Header extends React.Component {
         if (this.props.currentUser) {
             loggedInOrNot = [
                 <NavItem eventKey={1}>
-                    <Link to="/user"> Profile </Link>
+                    <Link to={{pathname:'/user', state:{currentUser: this.props.currentUser} }}> Profile </Link>
                 </NavItem>,
                 <NavItem onClick={this.props.onLogout} eventKey={2}>
                 Logout   
                 </NavItem>
-                //
+                
             ];
         }
         else {
