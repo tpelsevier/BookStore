@@ -48,7 +48,8 @@ class App extends Component {
     });
   }
 
-  handleLogout(redirectTo="/home", notificationType="success", description="You're successfully logged out.") {
+  handleLogout(redirectTo="home", notificationType="success", description="You're successfully logged out.") {
+    console.log("LOGGIN OUT")
     localStorage.removeItem(localStorage.ACCESS_TOKEN);
 
     this.setState({
@@ -56,7 +57,7 @@ class App extends Component {
       isAuthenticated: false
     });
 
-    this.props.history.push(redirectTo);
+    //this.props.history.push(redirectTo);
   }
 
   handleLogin() {
@@ -86,7 +87,7 @@ class App extends Component {
               <Route exact path='/UserProfile' component={UserProfile}/>
               <Route exact path='/ChangePass' component={ChangePass}/>
               <Route exact path='/checkout' component={Checkout}/>
-              <Route path='/users/:username'
+              <Route path='/user'
                 render={(props) => <UserProfile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props}  />}>
               >
               </Route>
